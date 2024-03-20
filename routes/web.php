@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('todos', [TodosController::class, 'index']);
+Route::get('/todos', [TodosController::class, 'index']);

@@ -8,5 +8,15 @@
 </head>
 <body>
     <h1>Todo Page</h1>
+    <ul>
+         @foreach($todos as $todo)
+  
+        <li>
+            {{$todo->name}}
+        </li>
+   
+   
+    @endforeach
+</ul>
 </body>
 </html>
