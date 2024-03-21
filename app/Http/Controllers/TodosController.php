@@ -21,7 +21,13 @@ class TodosController extends Controller
       return view('todos.create');
    }
    public function store(){
+
       // dd(request()->all());
+    $this->validate(request(),[
+    'name'=>'required|min:6|max:12',
+    'description'=>'required'
+    ]);
+
       $data = request()->all();
       $todo = new Todo();
       $todo->name = $data['name'];

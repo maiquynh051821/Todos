@@ -12,13 +12,25 @@
                     Create new todos
                 </div>
                 <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="list-group">
+                                @foreach ($errors->all() as $errors)
+                                    <li class="list-group-item">
+                                        {{ $errors }}
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                        </div>
+                    @endif
                     <form action="/store-todos" method="POST">
                         @csrf
-                        
+
                         <div class="form-group">
                             <input type="text" class="form-control" name="name" placeholder="Name">
                         </div>
-                       <br>
+                        <br>
                         <div class="form-group">
                             <textarea name="description" placeholder="Description" cols="5" rows="5" class="form-control"></textarea>
                         </div>
