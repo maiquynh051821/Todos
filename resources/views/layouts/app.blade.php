@@ -19,6 +19,9 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/todos/">Todos</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/new-todos/">Create Todos</a>
+              </li>
             </ul>
           </div>
         </div>
