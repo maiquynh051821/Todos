@@ -22,7 +22,7 @@
                  
                        <li class="list-group-item">
                            {{$todo->name}}
-                       <button class="btn btn-primary btn-sm float-end">Chi tiet</button>
+                       <a href="/todos/{{$todo->id}}" class="btn btn-primary btn-sm float-end">Chi tiet</a>
                     </li> 
                    @endforeach
                </ul>

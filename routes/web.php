@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/todos', [TodosController::class, 'index']);
+Route::get('/todos/{todoId}',[TodosController::class,'show']);
