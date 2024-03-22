@@ -16,10 +16,10 @@ class SampleEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    protected $contentData;
-    public function __construct($contentData)
+    protected $sendmail;
+    public function __construct($sendmail)
     {
-        $this->contentData = $contentData;
+        $this->sendmail = $sendmail;
     }
 
     /**
@@ -38,7 +38,8 @@ class SampleEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'todos.sendmail',
+            view: 'todos.contentmail',
+            with: ['sendmail' => $this->sendmail],
         );
     }
 

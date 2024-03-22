@@ -91,7 +91,7 @@ class TodosController extends Controller
       $sendmail->email = $data['email'];
       $sendmail->content = $data['content'];
       $sendmail->save();
-      Mail::to($data['email'])->send(new SampleEmail($data['content']));
+      Mail::to($data['email'])->send(new SampleEmail($sendmail));
       session()->flash('success', 'You have successfully sent email.');
       return redirect('/send-email');
 
