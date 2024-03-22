@@ -36,6 +36,7 @@ class TodosController extends Controller
       $todo->description = $data['description'];
       $todo->completed = false;
       $todo->save();
+      session()->flash('success','Todo created successfully.');
       return redirect('/todos');
    }
    public function edit($todoId)
@@ -54,11 +55,13 @@ class TodosController extends Controller
       $todo->name = $data['name'];
       $todo->description = $data['description'];
       $todo->save();
+      session()->flash('success','Todo update successfully.');
       return redirect('/todos');
    }
    public function destroy(Todo $todo){
       // $todo = Todo::find($todoId);
       $todo->delete();
+      session()->flash('success','Todo deleted successfully.');
       return redirect('/todos');
    }
 }
