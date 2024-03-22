@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Sendmail;
 use Illuminate\Http\Request;
 use App\Models\Todo;
-
+use App\Mail\SampleEmail;
+use Illuminate\Support\Facades\Mail;
 class TodosController extends Controller
 {
    public function index()
@@ -90,9 +91,11 @@ class TodosController extends Controller
       $sendmail->email = $data['email'];
       $sendmail->content = $data['content'];
       $sendmail->save();
+      Mail::to($data['email'])->send(new SampleEmail($data['content']));
       session()->flash('success', 'You have successfully sent email.');
       return redirect('/send-email');
 
    }
+  
 
 }
