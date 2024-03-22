@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sendmail;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 
@@ -36,7 +37,7 @@ class TodosController extends Controller
       $todo->description = $data['description'];
       $todo->completed = false;
       $todo->save();
-      session()->flash('success','Todo created successfully.');
+      session()->flash('success', 'Todo created successfully.');
       return redirect('/todos');
    }
    public function edit($todoId)
@@ -55,21 +56,43 @@ class TodosController extends Controller
       $todo->name = $data['name'];
       $todo->description = $data['description'];
       $todo->save();
-      session()->flash('success','Todo update successfully.');
+      session()->flash('success', 'Todo update successfully.');
       return redirect('/todos');
    }
-   public function destroy(Todo $todo){
+   public function destroy(Todo $todo)
+   {
       // $todo = Todo::find($todoId);
       $todo->delete();
-      session()->flash('success','Todo deleted successfully.');
+      session()->flash('success', 'Todo deleted successfully.');
       return redirect('/todos');
    }
-   public function complete(Todo $todo){
-      {
+   public function complete(Todo $todo)
+   { {
          $todo->completed = true;
-         $todo ->save();
-         session()->flash('success','Todo completed successfully');
+         $todo->save();
+         session()->flash('success', 'Todo completed successfully');
          return redirect('/todos');
       }
    }
+   public function sendmail()
+   {
+
+      return view('todos.sendmail');
+   }
+   public function storemail()
+   {
+      $this->validate(request(),[
+         'email'=>'required|email',
+         'content'=>'required'
+      ]);
+      $data = request()->all();
+      $sendmail = new Sendmail();
+      $sendmail->email = $data['email'];
+      $sendmail->content = $data['content'];
+      $sendmail->save();
+      session()->flash('success', 'You have successfully sent email.');
+      return redirect('/send-email');
+
+   }
+
 }

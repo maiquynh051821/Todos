@@ -22,6 +22,9 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/new-todos/">Create Todos</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/send-email/">Send Email</a>
+              </li>
             </ul>
           </div>
         </div>
