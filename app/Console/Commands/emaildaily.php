@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use App\Models\Sendmail;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SampleEmail;
-class EmailDailyCommand extends Command
+class EmailDaily extends Command
 {
     protected $signature = 'email:daily';
     protected $description = 'Send daily emails';
