@@ -14,7 +14,7 @@ class EmailDaily extends Command
     public function handle()
     {
         // Lấy danh sách email cần gửi hàng ngày
-        $emails = Sendmail::where('schedule_send', true)->get();
+        $emails = Sendmail::where('checkbox', true)->get();
 
         // Gửi email cho mỗi email trong danh sách
         foreach ($emails as $email) {
