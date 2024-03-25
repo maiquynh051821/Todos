@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Mail\SampleEmail;
 use Illuminate\Support\Facades\Mail;
-use App\Console\Commands\emaildaily;
+use App\Console\Commands\Emaildaily;
 class TodosController extends Controller
 {
    public function index()
@@ -94,12 +94,12 @@ class TodosController extends Controller
       $sendmail->content = $data['content'];
       $sendmail->checkbox= $checkboxValue;
       $sendmail->save();
-      if(!$checkboxValue){
+      
       
          Mail::to($data['email'])->send(new SampleEmail($sendmail));
          session()->flash('success', 'You have successfully sent email.');
          return redirect('/send-email');
-      }
+      
       
 
    }
