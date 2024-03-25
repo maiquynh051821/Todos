@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Mail\SampleEmail;
 use Illuminate\Support\Facades\Mail;
+use App\Console\Commands\emaildaily;
 class TodosController extends Controller
 {
    public function index()
@@ -87,13 +88,19 @@ class TodosController extends Controller
          'content'=>'required'
       ]);
       $data = request()->all();
+      $checkboxValue = isset($data['checkbox']);
       $sendmail = new Sendmail();
       $sendmail->email = $data['email'];
       $sendmail->content = $data['content'];
+      $sendmail->checkbox= $checkboxValue;
       $sendmail->save();
-      Mail::to($data['email'])->send(new SampleEmail($sendmail));
-      session()->flash('success', 'You have successfully sent email.');
-      return redirect('/send-email');
+      if(!$checkboxValue){
+      
+         Mail::to($data['email'])->send(new SampleEmail($sendmail));
+         session()->flash('success', 'You have successfully sent email.');
+         return redirect('/send-email');
+      }
+      
 
    }
   

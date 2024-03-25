@@ -28,7 +28,7 @@ class SampleEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Chao buoi sang',
+            subject: 'From Mai Quynh',
         );
     }
 

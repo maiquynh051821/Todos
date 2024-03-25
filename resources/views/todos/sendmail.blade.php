@@ -34,6 +34,10 @@
                             <textarea name="content" placeholder="Email content" cols="5" rows="5" class="form-control"></textarea>
                         </div>
                         <br>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkbox" name="checkbox">
+                            <label for="checkbox" class="form-check-label">Send emails automatically</label>
+                        </div>
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-success" style="background-color:rgb(245, 26, 92)">Send Email</button>
                         </div>
