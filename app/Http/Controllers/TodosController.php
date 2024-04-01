@@ -94,15 +94,11 @@ class TodosController extends Controller
       $sendmail->content = $data['content'];
       $sendmail->checkbox= $checkboxValue;
       $sendmail->save();
-      
-      
+   //   dd($sendmail->email,$sendmail->content);
+   // \Log::debug($sendmail->email);
          Mail::to($data['email'])->send(new SampleEmail($sendmail));
          session()->flash('success', 'You have successfully sent email.');
          return redirect('/send-email');
-      
-      
-
    }
   
-
 }
